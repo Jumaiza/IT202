@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light</title>
+
+</head>
+<body>
+    <div id="container">
+        <h1>
+            Click to turn the lightbulb on!
+        </h1>
+        <div id="bulb" class="bulboff"></div>
+
+    </div>
+
+    <style type="text/css">
+        #container {width:1000px; height:1000px; margin:auto; text-align:center;}
+    
+        .bulboff {
+            width: 500px; 
+            height: 780px; 
+            background: url('off.jpg') no-repeat;
+            margin: auto; 
+            }
+    
+        .bulbon{
+            width: 500px; 
+            height: 780px; 
+            background: url('on.jpg') no-repeat;
+            margin: auto;
+        }
+    </style>
+    
+    <script>
+    
+        var light = document.getElementById("bulb");
+    
+        light.addEventListener('click',function(light){
+            light.target.classList.toggle('bulbon');
+        })
+    
+    </script>
+</body>
+</html>

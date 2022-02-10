@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        var from = null, start = 0, url = 'https://web.njit.edu/~zma4/messages.php';
+        $(document).ready(function(){
+            from=prompt("Please enter your name");
+            password=prompt("Please enter your password");
+            if((from=="zaid" && password=="232") || (from=="feras" && password=="792")){
+                load();
+                $('form').submit(function (e) {
+                    $.post(url, {
+                        message: $('#message').val(),
+                        from: from
+                        });
+                        $('#message').val('');
+                    return false;
+                })
+            }else{
+                alert("Wrong info. Try again");
+                window.location.href = 'front.html';
+            }
+        });
+
+        function load(){
+            $.get(url + '?start=' + start, function(result){
+                if(result.items){
+                    result.items.forEach(item =>{
+                        start = item.id;
+                        $('#messages').append(renderMessage(item));
+                    })
+                };
+                load();
+            });
+        }
+
+        function renderMessage(item){
+            return `<div class="msg"><p>${item.from}</p>${item.message}</div>`;
+        }
+    </script>
+    <style>
+        body{
+            margin:0;
+            overflow: hidden;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        #messages{
+            height: 88vh;
+            overflow-x:hidden;
+            padding: 10px;
+        }
+        form{
+            display: flex
+        }
+        input{
+            font-size: 1.2rem;
+            padding: 10px;
+            margin: 10px 5px;
+            appearance: none;
+            -webkit-appearance: none;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #message{
+            flex: 2
+        }
+        .msg{
+            background-color: blanchedalmond;
+            padding: 5px 10px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            width: fit-content
+        }
+        .msg p{
+            margin: 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id ="messages"></div>
+    <form>
+        <input type="text" id="message" autocomplete="off" autofocus placeholder="Type message">
+        <input type="submit" value="Send">
+    </form>
+</body>
+</html>

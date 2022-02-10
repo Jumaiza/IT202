@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta Quantity="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 9</title>
+</head>
+
+<body>
+    <form action="submit.php" method="post">
+        <div>
+        <label for="name">Name: </label>
+        <input placeholder="Example: John" id="name" name="name" type="text" required/>
+    </div>
+    <div>
+        <label for="item">Item Needed:</label>
+        <select id="item" name="item" required>
+            <option value="Pencil">
+                Pencil
+            </option>
+            <option value="Notebook">
+                Notebook
+            </option>
+            <option value="Eraser">
+                Eraser
+            </option>
+            <option value="Pen">
+                Pen
+            </option>
+            <option value="Calculator">
+                Calculator
+            </option>
+            <option value="Folder">
+                Folder
+            </option>
+        </select>
+        </div>
+        <div>
+        <label for="Quantity">Quantity: </label>
+        <input placeholder="Example: 2" id="Quantity" name="Quantity" type="number" required/>
+        </div>
+        <div>
+        <label for="Price">Price: </label>
+        <input placeholder="Example: 35" id="Price" name="Price" type="number" required/>
+        </div>
+        <div>
+        <label for="tax">Tax Rate: </label>
+        <input placeholder="Example: 6" id="tax" name="tax" type="number" required/>
+        </div>
+        <div>
+        <input type="submit" id="submit" name="submit" />
+    </div>
+    </form>
+</body>
+
+</html>

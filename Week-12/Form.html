@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 12</title>
+
+    <script>
+        
+        function Req(course) {
+          if (course.length == 0) {
+            document.getElementById("result").innerHTML="";
+          }else {
+    
+          var myReq = new XMLHttpRequest();
+    
+          myReq.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("result").innerHTML = this.responseText;
+            }
+          };
+    
+          myReq.open("GET", "Request.php?q="+course, true);
+          myReq.send();
+        }
+    }
+      </script>
+  </head>
+  <body>
+    <h2>Please enter the name of the course you want to lookup</h2>
+    <form>
+      Course name:<input type="text" id="course" name="course" onkeyup="Req(this.value)" />
+    </form>
+    <P>FOUND: <span id="result"></span></P>
+  </body>
+</html>
